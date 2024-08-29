@@ -9,23 +9,6 @@ const HomePage = () => {
 
   return (
     <div className="relative flex flex-col overflow-hidden w-1080 h-1920 bg-[url('/01-home-page/homePageBg.png')]">
-      <img
-        src="../01-home-page/ParagonLogo.png"
-        alt="product"
-        className="absolute z-30 w-[130px] left-[346px] top-[28px] rounded-lg scale-90"
-      />
-
-      <img
-        src="../01-home-page/product.png"
-        alt="product"
-        className="absolute z-30"
-      />
-
-      <img
-        src="../01-home-page/ball-crab.png"
-        alt="carb"
-        className="absolute z-30"
-      />
 
       <div className="absolute bottom-[535px] left-[-54px] rotate-[5deg] border-[16px] border-white rounded-3xl">
         <img

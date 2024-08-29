@@ -23,8 +23,8 @@ export const ConsentModal: React.FC = () => {
   return (
     <Dialog>
       <DialogTrigger>
-        <Button className=" font-primaryRegular text-white text-7xl py-11 px-24 rounded-full border-4 border-white bg-gradient-to-r from-button-primary to-button-secondary shadow-2xl">
-          เล่นเลย
+        <Button className="font-primaryRegular text-white text-7xl py-11 px-24 rounded-full border-4 border-white bg-[#F882AA] shadow-2xl">
+          Play
         </Button>
       </DialogTrigger>
       <DialogContent>
