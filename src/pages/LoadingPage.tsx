@@ -9,20 +9,12 @@ const LoadingPage: React.FC<Props> = ({ shouldShowLoadingBar }) => {
 
   return (
     <div className="w-full h-[100vh] bg-[url('/03-waiting-page/waiting-bg.png')] overflow-hidden bg-contain relative">
-      <div className="absolute repeat-infinite animate-spin-slow top-[185px] right-[280px]">
+      <div className="absolute repeat-infinite animate-bounce top-[501px] right-[394px]">
         <img
-          src="/03-waiting-page/sun.svg"
-          alt="sun"
-          width="500px"
-          height="200px"
-        />
-      </div>
-      <div className="absolute bottom-[750px] right-[60px]">
-        <img
-          src="/03-waiting-page/loading-placeholder.svg"
+          src="/03-waiting-page/loading.svg"
           alt="loading"
-          width="1000px"
-          height="200px"
+          width="291px"
+          height="77px"
         />
       </div>
 
