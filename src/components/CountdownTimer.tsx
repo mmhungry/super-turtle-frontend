@@ -12,19 +12,19 @@ const CountdownTimer: React.FC<CountdownTimerProps> = ({
       {isCounting && remaining > 0 && (
         <div>
           <div className="flex flex-row justify-center gap-4 mt-[1474px] ">
-            <img
+            {/* <img
               src="/arrow-up-icon.svg"
               alt="arrow-up"
               className="w-[70px] h-[70px] self-center "
-            />
-            <h1 className=" font-primaryBold text-7xl text-button-secondary z-20">
-              กรุณามองกล้องด้านบน
-            </h1>
-            <img
+            /> */}
+            {/* <h1 className=" font-primaryBold text-7xl text-[#F882AA] text-stroke-white text-stroke-2 z-20">
+              Look at the camera
+            </h1> */}
+            {/* <img
               src="/arrow-up-icon.svg"
               alt="arrow-up"
               className="w-[70px] h-[70px] self-center"
-            />
+            /> */}
           </div>
 
           <img
