@@ -76,19 +76,22 @@ const ResultPage = () => {
           icon={<img src="/back-icon.svg" width="60px" />}
           className="rounded-full p-7 from-white to-white"
         />
-        <LinkButton
+        {/* <LinkButton
           content="รับครีมกันแดด"
           href="/display"
           icon={<img src="/next-icon.svg" />}
           className="flex flex-row items-center gap-4"
-        />
+        /> */}
       </div>
     );
   };
 
   return (
     <div className="relative flex flex-col w-1080 h-1920 overflow-hidden bg-[url('/04-result-page/result-page-bg.png')] bg-contain ">
-      <div className="absolute bg-black w-[460px] h-[460px] bottom-[550px] left-[70px] rounded-2xl z-10">
+      <div
+        className="absolute bg-white w-[460px] h-[460px] bottom-[550px] left-[70px] rounded-2xl z-10 border-8
+         border-white"
+      >
         {isLoading ? (
           <Skeleton className="h-full w-full rounded-2xl" />
         ) : (
@@ -101,7 +104,10 @@ const ResultPage = () => {
           />
         )}
       </div>
-      <div className="absolute bg-black w-[460px] h-[460px] bottom-[550px] right-[70px] rounded-2xl z-10">
+      <div
+        className="absolute bg-white w-[460px] h-[460px] bottom-[550px] right-[70px] rounded-2xl z-10 border-8
+         border-white"
+      >
         {isLoading ? (
           <Skeleton className="h-full w-full rounded-2xl" />
         ) : (

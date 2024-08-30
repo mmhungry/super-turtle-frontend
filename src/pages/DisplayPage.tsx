@@ -1,4 +1,5 @@
-import LinkButton from "@/components/LinkButton";
+//not using
+// import LinkButton from "@/components/LinkButton";
 import { useToast } from "@/components/ui/use-toast";
 import { UrlKey } from "@/constants/UrlKeys";
 import { DEFAULT_TIMEOUT } from "@/constants/timeout";
@@ -33,7 +34,9 @@ const DisplayPage = () => {
   return (
     <>
       <div className="relative flex flex-col w-1080 h-1920 overflow-hidden bg-[url('/05-display-page/display-page-bg.png')] bg-contain">
-        <div className="absolute w-[810px] h-[810px] bottom-[360px] left-[140px] rounded-2xl z-10">
+        {/* Image with a white border frame */}
+        <div className="absolute w-[810px] h-[810px] bottom-[360px] left-[140px] rounded-2xl border-8
+         border-white z-10">
           {sunscreenUrl && (
             <img
               src={sunscreenUrl}
@@ -45,26 +48,25 @@ const DisplayPage = () => {
           )}
         </div>
 
-        <img
+        {/* Top left image with a white border frame */}
+
+        {/* <img
           src="../05-display-page/text-top-left.svg"
-          width="400px"
-          height="400px"
           alt="text-top"
-          className="absolute z-10 w-[400px] h-[400px] top-[600px] left-[0px]"
-        />
-        <img
-          src="../05-display-page/text-bottom-right.svg"
-          width="400px"
-          height="400px"
-          alt="text-top"
-          className="absolute z-10 right-[0px] bottom-[400px]"
+          className="w-full h-full rounded-lg"
         />
 
-        <LinkButton
+        <img
+          src="../05-display-page/text-bottom-right.svg"
+          alt="text-bottom"
+          className="w-full h-full rounded-lg"
+        /> */}
+
+        {/* <LinkButton
           content="รับครีมกันแดด"
           href="/ads"
           className="absolute bottom-[168px] left-[357px]"
-        />
+        /> */}
       </div>
     </>
   );
