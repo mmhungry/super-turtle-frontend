@@ -39,8 +39,12 @@ const CapturePage = () => {
         });
         const data = resp.data;
 
+        // navigate(
+        //   `/result?refId=${data.id}&sunscreenRefId=${data.sunscreenRefId}&noSunscreenRefId=${data.noSunscreenRefId}`
+        // );
         navigate(
-          `/result?refId=${data.id}&sunscreenRefId=${data.sunscreenRefId}&noSunscreenRefId=${data.noSunscreenRefId}`
+          `/result?refId=${data.id}&sunscreenRefId=${data.sunscreenRefId}&noSunscreenRefId=${data.noSunscreenRefId}`,
+          { state: { fromCapture: true } }
         );
       }
     } catch (error) {
@@ -108,7 +112,6 @@ const CapturePage = () => {
         Capture
         {buttonDisabled && <Spinner />}
       </Button>
-
     </div>
   );
 };

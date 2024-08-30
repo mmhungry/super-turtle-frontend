@@ -1,15 +1,33 @@
 import LoadingBar from "@/components/LoadingBar";
 import ParagonLoading from "./ParagonLoading";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
-interface Props {
-  shouldShowLoadingBar?: boolean;
-}
-const LoadingPage: React.FC<Props> = ({ shouldShowLoadingBar }) => {
-  const location = localStorage.getItem("location");
+const LoadingPage: React.FC = () => {
+  const [showButton, setShowButton] = useState<boolean>(false);
+  const [showParagonLoading, setShowParagonLoading] = useState<boolean>(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state?.fromCapture) {
+      setShowParagonLoading(true);
+    }
+
+    const timer = setTimeout(() => {
+      setShowButton(true);
+    }, 10000); // 10 seconds
+
+    return () => clearTimeout(timer);
+  }, [location]);
+
+  const handleCloseAd = () => {
+    setShowParagonLoading(false);
+    setShowButton(false);
+  };
 
   return (
-    <div className="w-full h-[100vh] bg-[url('/03-waiting-page/waiting-bg.png')] overflow-hidden bg-contain relative">
-      <div className="absolute repeat-infinite animate-bounce top-[501px] right-[394px]">
+    <div className="relative flex flex-col overflow-hidden w-1080 h-1920 bg-[url('/03-waiting-page/waiting-bg.png')]">
+      <div className="absolute repeat-infinite animate-bounce top-[526px] right-[394px]">
         <img
           src="/03-waiting-page/loading.svg"
           alt="loading"
@@ -18,12 +36,19 @@ const LoadingPage: React.FC<Props> = ({ shouldShowLoadingBar }) => {
         />
       </div>
 
-      {shouldShowLoadingBar && location === "SCB_NEXT_TECH" ? (
-        <ParagonLoading />
-      ) : (
-        <div className="absolute z-40 w-full bottom-[700px] left-[280px] ">
-          <LoadingBar />
-        </div>
+      {showParagonLoading && <ParagonLoading />}
+
+      <div className="absolute z-40 w-full top-[625px] left-[280px] ">
+        <LoadingBar />
+      </div>
+
+      {showButton && showParagonLoading && (
+        <button
+          onClick={handleCloseAd}
+          className="absolute bottom-20 left-1/2 transform -translate-x-1/2 bg-blue-500 text-white px-6 py-3 rounded-full z-50"
+        >
+          Close Ad
+        </button>
       )}
     </div>
   );

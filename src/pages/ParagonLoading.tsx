@@ -1,17 +1,26 @@
-import LoadingBar from "@/components/LoadingBar";
+// import LoadingBar from "@/components/LoadingBar";
 
 const ParagonLoading = () => {
   return (
     <div>
-      <div className="absolute z-40 w-full bottom-[1209px] left-[280px] ">
+      {/* <div className="absolute z-40 w-full bottom-[1209px] left-[280px] ">
         <LoadingBar />
-      </div>
+      </div> */}
       <div>
         <img
-          src="/paragonAds.png"
-          alt="paragonAds"
-          className="absolute z-30 w-[836px] bottom-[64px] left-[116px] rounded-2xl"
+          src="/ads.png"
+          alt="ads"
+          className="absolute z-60 w-[836px] bottom-[150px] left-[116px] rounded-2xl border-white border-[10px]"
         />
+        {/* <video
+          src="/paragonAds.mp4"  // Replace with the correct video source path
+          // alt="paragonAds"
+          className="absolute z-30 w-[836px] bottom-[64px] left-[116px] rounded-2xl"
+          autoPlay
+          loop
+          muted
+          controls={false}  
+        /> */}
       </div>
     </div>
   );
