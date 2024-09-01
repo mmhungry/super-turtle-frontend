@@ -11,7 +11,7 @@ import { useTimeout } from "@/hooks/useTimeout";
 import { DEFAULT_TIMEOUT } from "@/constants/timeout";
 import { useLoadBg } from "@/hooks/useLoadBg";
 import { LoadingPage } from "./LoadingPage";
-
+import axios from "axios";
 const videoConstraints = {
   width: 720,
   height: 720,
@@ -27,6 +27,7 @@ const CapturePage = () => {
   const [isCounting, setIsCounting] = useState(false);
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const { toast } = useToast();
+  const [gender, setGender] = useState(null); // Add gender state
   useTimeout({ duration: DEFAULT_TIMEOUT });
 
   const capture = useCallback(async () => {
@@ -39,12 +40,26 @@ const CapturePage = () => {
         });
         const data = resp.data;
 
-        // navigate(
-        //   `/result?refId=${data.id}&sunscreenRefId=${data.sunscreenRefId}&noSunscreenRefId=${data.noSunscreenRefId}`
-        // );
+        const genderCheckUrl =
+          "https://3dn4evazn4.execute-api.ap-southeast-1.amazonaws.com/prod/api/classify-gender";
+        const healthCheckToken = "gender-class-ztn6vhv6avc-AMT2hkh";
+
+        const base64Image = imageSrc.split(",")[1]; // Assuming imageSrc is in 'data:image/jpeg;base64,...' format
+
+        const genderCheckResp = await axios.post(genderCheckUrl, base64Image, {
+          headers: {
+            Authorization: `Bearer ${healthCheckToken}`,
+            "Content-Type": "text/plain",
+            Accept: "application/json",
+          },
+        });
+
+        const { gender } = genderCheckResp.data; 
+        setGender(gender);
+
         navigate(
           `/result?refId=${data.id}&sunscreenRefId=${data.sunscreenRefId}&noSunscreenRefId=${data.noSunscreenRefId}`,
-          { state: { fromCapture: true } }
+          { state: { fromCapture: true, gender } }
         );
       }
     } catch (error) {
@@ -66,7 +81,6 @@ const CapturePage = () => {
       });
     }
   }, [navigate, toast]);
-
   const startCapture = () => {
     if (!buttonDisabled) {
       setIsCounting(true);
@@ -87,6 +101,9 @@ const CapturePage = () => {
   };
 
   if (!isBgLoaded) return <LoadingPage />;
+
+  // // Display loading screen while waiting for mock responses
+  // if (isLoading) return <LoadingPage />;
 
   return (
     <div className="relative flex flex-col w-1080 h-1920 overflow-hidden bg-[url('/02-capture-page/capturing-page-bg.png')] bg-contain">

@@ -2,6 +2,7 @@ import LoadingBar from "@/components/LoadingBar";
 import ParagonLoading from "./ParagonLoading";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 const LoadingPage: React.FC = () => {
   const [showButton, setShowButton] = useState<boolean>(false);
@@ -43,12 +44,12 @@ const LoadingPage: React.FC = () => {
       </div>
 
       {showButton && showParagonLoading && (
-        <button
+        <Button
+          className="font-primaryRegular text-white text-3xl py-4 px-16 rounded-full border-4 border-white bg-[#F882AA] shadow-2xl absolute bottom-20 left-1/2 transform -translate-x-1/2"
           onClick={handleCloseAd}
-          className="absolute bottom-20 left-1/2 transform -translate-x-1/2 bg-blue-500 text-white px-6 py-3 rounded-full z-50"
         >
-          Close Ad
-        </button>
+          Close
+        </Button>
       )}
     </div>
   );
