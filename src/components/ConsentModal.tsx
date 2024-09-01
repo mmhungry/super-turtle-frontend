@@ -30,13 +30,13 @@ export const ConsentModal: React.FC = () => {
       <DialogContent>
         <DialogHeader>
           <DialogTitle className=" font-primaryRegular text-5xl">
-            ประกาศการคุ้มครองข้อมูลส่วนบุคคล โครงการ Sunscreen Digital Kiosk
+            ประกาศการคุ้มครองข้อมูลส่วนบุคคล 
           </DialogTitle>
           <DialogDescription className=" font-primaryRegular max-h-[50vh] text-3xl overflow-scroll lg:max-h-30vh">
             <p>
               เรียน ท่านผู้เข้าร่วมกิจกรรม <br />
-              &nbsp; &nbsp;ทีมงานนิสิตคณะวิศวะกรรมศาสตร์จุฬาลงกรณ์มหาวิทยาลัย
-              และ บริษัท มิซึฮาดะ กรุ๊ป จํากัด (“ทีมผู้พัฒนาโครงการ”)
+              &nbsp; &nbsp;ทีมงาน
+              และ บริษัท ซุปเปอร์ เทอร์เทิล จำกัด (มหาชน) 
               ให้ความสำคัญกับความเป็นส่วนตัว
               และมุ่งมั่นที่จะคุ้มครองข้อมูลส่วนบุคคลของท่านตามกฏหมาย
               <br />

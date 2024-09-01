@@ -59,22 +59,28 @@ const CapturePage = () => {
 
         //VM Server
         // const vmServerApiUrl = "";
-        // const vmCode = ""; 
+        // const vmCode = "";
 
         // const vmResponse = await axios.post(vmServerApiUrl, {
         //   vmCode: vmCode,
-        //   gender: gender, 
+        //   gender: gender,
         // });
         // console.log("vm resp:", vmResponse)
 
         // Simulate VM response with a mock ID
-      const mockVmResponseId = "mock-vm-response-id-123";
+        const mockVmResponseId = "mock-vm-response-id-123";
 
-      // Now navigate to the result page with the gender state and mock VM response ID
-      navigate(
-        `/result?refId=${data.id}&sunscreenRefId=${data.sunscreenRefId}&noSunscreenRefId=${data.noSunscreenRefId}`,
-        { state: { fromCapture: true, gender, vmResponseId: mockVmResponseId } } // Pass the gender and mock VM response ID
-      );
+        // Now navigate to the result page with the gender state and mock VM response ID
+        navigate(
+          `/result?refId=${data.id}&sunscreenRefId=${data.sunscreenRefId}&noSunscreenRefId=${data.noSunscreenRefId}`,
+          {
+            state: {
+              fromCapture: true,
+              gender,
+              vmResponseId: mockVmResponseId,
+            },
+          } // Pass the gender and mock VM response ID
+        );
 
         // navigate(
         //   `/result?refId=${data.id}&sunscreenRefId=${data.sunscreenRefId}&noSunscreenRefId=${data.noSunscreenRefId}`,
@@ -125,7 +131,8 @@ const CapturePage = () => {
   // if (isLoading) return <LoadingPage />;
 
   return (
-    <div className="relative flex flex-col w-1080 h-1920 overflow-hidden bg-[url('/02-capture-page/capturing-page-bg.png')] bg-contain">
+    <div className="relative flex flex-col items-center justify-center overflow-hidden w-[100vw] h-[100vh] bg-[url('/02-capture-page/capturing-page-bg.png')] bg-cover bg-center">
+      
       <Webcam
         audio={false}
         ref={webcamRef}
