@@ -9,7 +9,7 @@
 
     /* Bundler mode */
     // "moduleResolution": "bundler",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
