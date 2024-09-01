@@ -54,13 +54,32 @@ const CapturePage = () => {
           },
         });
 
-        const { gender } = genderCheckResp.data; 
+        const { gender } = genderCheckResp.data;
         setGender(gender);
 
-        navigate(
-          `/result?refId=${data.id}&sunscreenRefId=${data.sunscreenRefId}&noSunscreenRefId=${data.noSunscreenRefId}`,
-          { state: { fromCapture: true, gender } }
-        );
+        //VM Server
+        // const vmServerApiUrl = "";
+        // const vmCode = ""; 
+
+        // const vmResponse = await axios.post(vmServerApiUrl, {
+        //   vmCode: vmCode,
+        //   gender: gender, 
+        // });
+        // console.log("vm resp:", vmResponse)
+
+        // Simulate VM response with a mock ID
+      const mockVmResponseId = "mock-vm-response-id-123";
+
+      // Now navigate to the result page with the gender state and mock VM response ID
+      navigate(
+        `/result?refId=${data.id}&sunscreenRefId=${data.sunscreenRefId}&noSunscreenRefId=${data.noSunscreenRefId}`,
+        { state: { fromCapture: true, gender, vmResponseId: mockVmResponseId } } // Pass the gender and mock VM response ID
+      );
+
+        // navigate(
+        //   `/result?refId=${data.id}&sunscreenRefId=${data.sunscreenRefId}&noSunscreenRefId=${data.noSunscreenRefId}`,
+        //   { state: { fromCapture: true, gender } }
+        // );
       }
     } catch (error) {
       toast({

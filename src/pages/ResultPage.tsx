@@ -14,11 +14,23 @@ import { ToastAction } from "@radix-ui/react-toast";
 import { useTimeout } from "@/hooks/useTimeout";
 import { useLoadBg } from "@/hooks/useLoadBg";
 import { DEFAULT_TIMEOUT } from "@/constants/timeout";
+import { Button } from "@/components/ui/button";
 
 const ResultPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { gender } = location.state || {}; 
+  const { gender, vmResponseId } = location.state || {};
+  const [isPriceDropped, setIsPriceDropped] = useState(false);
+
+  useEffect(() => {
+    console.log("Gender state received in ResultPage:", gender);
+    console.log("VM Response ID received:", vmResponseId);
+  }, [gender, vmResponseId]);
+
+  const handleDropPrice = () => {
+    setIsPriceDropped(true);
+    console.log("Price dropped for VM response ID:", vmResponseId);
+  };
 
   const [backgroundUrl, setBackgroundUrl] = useState(
     "/04-result-page/result-page-bg.png"
@@ -83,8 +95,7 @@ const ResultPage = () => {
     },
   });
 
-  useEffect(() => {
-  }, [isBgLoaded]);
+  useEffect(() => {}, [isBgLoaded]);
 
   if (isLoading || !isBgLoaded) {
     return <LoadingPage shouldShowLoadingBar={true} />;
@@ -143,6 +154,18 @@ const ResultPage = () => {
             height="460px"
             width="460px"
           />
+        )}
+      </div>
+      <div className="absolute bottom-[100px] w-full flex justify-center">
+        {isPriceDropped ? (
+          <p>The price has been dropped!</p>
+        ) : (
+          <Button
+            className={`flex flex-row items-center gap-3 absolute font-primaryBold bottom-[237px] left-[377px] text-7xl py-12 px-16 rounded-full border-4 border-white bg-[#F882AA] text-white shadow-2xl z-50`}
+            onClick={handleDropPrice}
+          >
+            Click here
+          </Button>
         )}
       </div>
       <NavigationButtons />
