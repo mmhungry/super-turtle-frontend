@@ -27,7 +27,6 @@ const CapturePage = () => {
   const [isCounting, setIsCounting] = useState(false);
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const { toast } = useToast();
-  const [gender, setGender] = useState(null); // Add gender state
   useTimeout({ duration: DEFAULT_TIMEOUT });
 
   const capture = useCallback(async () => {
@@ -55,7 +54,6 @@ const CapturePage = () => {
         });
 
         const { gender } = genderCheckResp.data;
-        setGender(gender);
 
         //VM Server
         // const vmServerApiUrl = "";
