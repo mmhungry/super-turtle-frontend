@@ -109,7 +109,7 @@ const ResultPage = () => {
         <LinkButton
           href="/"
           icon={<img src="/back-icon.svg" width="60px" />}
-          className="rounded-full p-7 from-white to-white"
+          className="rounded-full p-1 from-white to-white"
         />
       </div>
     );
@@ -156,18 +156,18 @@ const ResultPage = () => {
           />
         )}
       </div>
-      <div className="absolute bottom-[100px] w-full flex justify-center">
-        {isPriceDropped ? (
-          <p>The price has been dropped!</p>
-        ) : (
-          <Button
-            className={`flex flex-row items-center gap-3 absolute font-primaryBold bottom-[237px] left-[377px] text-7xl py-12 px-16 rounded-full border-4 border-white bg-[#F882AA] text-white shadow-2xl z-50`}
-            onClick={handleDropPrice}
-          >
-            Click here
-          </Button>
-        )}
+      <div className="absolute bottom-[70px] left-1/2 transform -translate-x-1/2">
+        <Button
+          className={`flex flex-row items-center gap-3 font-primaryBold text-4xl py-6 px-14 rounded-full border-4 border-white text-white shadow-2xl z-50 ${
+            isPriceDropped ? "bg-gray-400 cursor-not-allowed" : "bg-[#916DBB]"
+          }`}
+          onClick={isPriceDropped ? undefined : handleDropPrice}
+          disabled={isPriceDropped} // Disable the button when price is dropped
+        >
+          {isPriceDropped ? "Don't forget to collect your price" : "Click here"}
+        </Button>
       </div>
+
       <NavigationButtons />
     </div>
   );
