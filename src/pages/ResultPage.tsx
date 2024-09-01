@@ -18,30 +18,21 @@ import { DEFAULT_TIMEOUT } from "@/constants/timeout";
 const ResultPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { gender } = location.state || {}; // Extract gender from state
+  const { gender } = location.state || {}; 
 
-  // Initial state for background
   const [backgroundUrl, setBackgroundUrl] = useState(
     "/04-result-page/result-page-bg.png"
   );
 
   useEffect(() => {
-    console.log("Gender state received in ResultPage:", gender);
-
-    // Ensure correct string matching (trimmed and case-insensitive)
     const normalizedGender = gender?.toUpperCase().trim();
-    console.log("Normalized Gender:", normalizedGender);
 
-    // Determine background based on gender
     const newBackgroundUrl =
       normalizedGender === "MALE"
         ? "/04-result-page/boy-page-bg.png"
         : normalizedGender === "FEMALE"
         ? "/04-result-page/girl-page-bg.png"
         : "/04-result-page/result-page-bg.png"; // Fallback for unidentified gender
-
-    // Log the chosen background URL
-    console.log("Setting new background URL to:", newBackgroundUrl);
 
     // Set the background URL with a timestamp to bypass caching
     setBackgroundUrl(`${newBackgroundUrl}?v=${new Date().getTime()}`);
@@ -92,9 +83,7 @@ const ResultPage = () => {
     },
   });
 
-  // Log whether the background is loaded
   useEffect(() => {
-    console.log("Is background loaded:", isBgLoaded);
   }, [isBgLoaded]);
 
   if (isLoading || !isBgLoaded) {
