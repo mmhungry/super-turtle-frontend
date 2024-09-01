@@ -98,7 +98,8 @@ const ResultPage = () => {
   useEffect(() => {}, [isBgLoaded]);
 
   if (isLoading || !isBgLoaded) {
-    return <LoadingPage shouldShowLoadingBar={true} />;
+    // return <LoadingPage shouldShowLoadingBar={true} />;
+    return <LoadingPage/>;
   }
 
   const NavigationButtons = () => {
