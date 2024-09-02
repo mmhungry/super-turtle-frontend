@@ -15,6 +15,7 @@ import { useTimeout } from "@/hooks/useTimeout";
 import { useLoadBg } from "@/hooks/useLoadBg";
 import { DEFAULT_TIMEOUT } from "@/constants/timeout";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 // Utility function to save the array to localStorage
 function saveArrayToLocalStorage(array: number[]): void {
@@ -51,6 +52,18 @@ function getNextRandomPrize(): string {
     saveArrayToLocalStorage(numbers);
     return "Your prize is " + nextNumber;
   }
+}
+
+function resetPrize(): void {
+  const numbers: number[] = Array.from({ length: 83 }, (_, i) => i + 1);
+
+  // Step 2: Shuffle the array using the Fisher-Yates shuffle algorithm
+  for (let i = numbers.length - 1; i > 0; i--) {
+    const j: number = Math.floor(Math.random() * (i + 1));
+    [numbers[i], numbers[j]] = [numbers[j], numbers[i]];
+  }
+  // Save the shuffled array to localStorage
+  saveArrayToLocalStorage(numbers);
 }
 
 const ResultPage = () => {
@@ -149,6 +162,16 @@ const ResultPage = () => {
           icon={<img src="/back-icon.svg" width="60px" />}
           className="rounded-full p-1 from-white to-white"
         />
+        <div
+          className={cn(
+            "font-primaryBold text-white text-7xl py-3 px-12 rounded-full border-4 bg-gradient-to-r shadow-2xl z-50 border-white from-button-primary to-button-secondary",
+            "active:opacity-50",
+            "rounded-full p-1 from-white to-white"
+          )}
+          onClick={resetPrize}
+        >
+          <img src="/refresh.svg" width="60px" />
+        </div>
       </div>
     );
   };
