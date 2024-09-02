@@ -66,7 +66,7 @@ const CapturePage = () => {
         // console.log("vm resp:", vmResponse)
 
         // Simulate VM response with a mock ID
-        const mockVmResponseId = "mock-vm-response-id-123";
+        // const mockVmResponseId = "mock-vm-response-id-123";
 
         // Now navigate to the result page with the gender state and mock VM response ID
         navigate(
@@ -75,7 +75,7 @@ const CapturePage = () => {
             state: {
               fromCapture: true,
               gender,
-              vmResponseId: mockVmResponseId,
+              // vmResponseId: mockVmResponseId,
             },
           } // Pass the gender and mock VM response ID
         );
