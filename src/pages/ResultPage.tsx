@@ -16,10 +16,48 @@ import { useLoadBg } from "@/hooks/useLoadBg";
 import { DEFAULT_TIMEOUT } from "@/constants/timeout";
 import { Button } from "@/components/ui/button";
 
+// Utility function to save the array to localStorage
+function saveArrayToLocalStorage(array: number[]): void {
+  localStorage.setItem("randomNumbers", JSON.stringify(array));
+}
+
+// Utility function to load the array from localStorage
+function loadArrayFromLocalStorage(): number[] | null {
+  const storedArray = localStorage.getItem("randomNumbers");
+  return storedArray ? JSON.parse(storedArray) : null;
+}
+
+function getNextRandomPrize(): string {
+  const storage: number[] | null = loadArrayFromLocalStorage();
+  if (storage) {
+    if (storage.length === 0) {
+      return "The prize is out of stock!";
+    }
+    const nextNumber = storage.pop() as number;
+    saveArrayToLocalStorage(storage);
+    return "Your prize is " + nextNumber;
+  } else {
+    const numbers: number[] =
+      loadArrayFromLocalStorage() ??
+      Array.from({ length: 83 }, (_, i) => i + 1);
+
+    // Step 2: Shuffle the array using the Fisher-Yates shuffle algorithm
+    for (let i = numbers.length - 1; i > 0; i--) {
+      const j: number = Math.floor(Math.random() * (i + 1));
+      [numbers[i], numbers[j]] = [numbers[j], numbers[i]];
+    }
+    // Save the shuffled array to localStorage
+    const nextNumber = numbers.pop() as number;
+    saveArrayToLocalStorage(numbers);
+    return "Your prize is " + nextNumber;
+  }
+}
+
 const ResultPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { gender} = location.state || {};
+  const { gender } = location.state || {};
+  const [prize, setPrize] = useState<string>("");
   const [isPriceDropped, setIsPriceDropped] = useState(false);
 
   useEffect(() => {
@@ -28,6 +66,7 @@ const ResultPage = () => {
   }, [gender]);
 
   const handleDropPrice = () => {
+    setPrize(getNextRandomPrize());
     setIsPriceDropped(true);
   };
 
@@ -43,8 +82,7 @@ const ResultPage = () => {
         ? "/04-result-page/boy-page-bg.png"
         : normalizedGender === "FEMALE"
         ? "/04-result-page/girl-page-bg.png"
-        : "/04-result-page/result-page-bg.png"; 
-
+        : "/04-result-page/result-page-bg.png";
 
     setBackgroundUrl(`${newBackgroundUrl}?v=${new Date().getTime()}`);
   }, [gender]);
@@ -98,7 +136,7 @@ const ResultPage = () => {
 
   if (isLoading || !isBgLoaded) {
     // return <LoadingPage shouldShowLoadingBar={true} />;
-    return <LoadingPage/>;
+    return <LoadingPage />;
   }
 
   const NavigationButtons = () => {
@@ -162,9 +200,9 @@ const ResultPage = () => {
             isPriceDropped ? "bg-gray-400 cursor-not-allowed" : "bg-[#916DBB]"
           }`}
           onClick={isPriceDropped ? undefined : handleDropPrice}
-          disabled={isPriceDropped} 
+          disabled={isPriceDropped}
         >
-          {isPriceDropped ? "Don't forget to collect your price" : "Click here"}
+          {isPriceDropped ? prize : "Click here"}
         </Button>
       </div>
 
