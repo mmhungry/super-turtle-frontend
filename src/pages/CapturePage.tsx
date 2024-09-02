@@ -68,7 +68,6 @@ const CapturePage = () => {
         // Simulate VM response with a mock ID
         // const mockVmResponseId = "mock-vm-response-id-123";
 
-        // Now navigate to the result page with the gender state and mock VM response ID
         navigate(
           `/result?refId=${data.id}&sunscreenRefId=${data.sunscreenRefId}&noSunscreenRefId=${data.noSunscreenRefId}`,
           {
@@ -79,11 +78,6 @@ const CapturePage = () => {
             },
           } // Pass the gender and mock VM response ID
         );
-
-        // navigate(
-        //   `/result?refId=${data.id}&sunscreenRefId=${data.sunscreenRefId}&noSunscreenRefId=${data.noSunscreenRefId}`,
-        //   { state: { fromCapture: true, gender } }
-        // );
       }
     } catch (error) {
       toast({
@@ -125,9 +119,6 @@ const CapturePage = () => {
 
   if (!isBgLoaded) return <LoadingPage />;
 
-  // // Display loading screen while waiting for mock responses
-  // if (isLoading) return <LoadingPage />;
-
   return (
     <div className="relative flex flex-col items-center justify-center overflow-hidden w-[100vw] h-[100vh] bg-[url('/02-capture-page/capturing-page-bg.png')] bg-cover bg-center">
       
@@ -137,12 +128,12 @@ const CapturePage = () => {
         mirrored={true}
         screenshotFormat="image/jpeg"
         videoConstraints={videoConstraints}
-        className="z-10 absolute bottom-[480px] left-[190px] rounded-[30px]"
+        className="z-10 absolute bottom-[450px] left-[190px] rounded-[48px]"
       />
 
       <CountdownTimer remaining={remainingTime} isCounting={isCounting} />
 
-      <div className="absolute h-[720px] w-[720px] bottom-[480px] left-[190px] bg-center bg-[url('/person-shadow.svg')] bg-contain z-20 opacity-75 bg-no-repeat rounded-[48px]" />
+      <div className="absolute h-[720px] w-[720px] bottom-[450px] left-[190px] bg-center bg-[url('/person-shadow.svg')] bg-contain z-20 opacity-75 bg-no-repeat rounded-[48px]" />
       <Button
         className={`flex flex-row items-center gap-3 absolute font-primaryBold bottom-[237px] left-[377px] text-7xl py-12 px-16 rounded-full border-4 border-white bg-[#F882AA] text-white shadow-2xl z-50 ${
           buttonDisabled && "opacity-50 left-[338px]"

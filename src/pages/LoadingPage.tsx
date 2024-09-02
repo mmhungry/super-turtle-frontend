@@ -27,7 +27,8 @@ const LoadingPage: React.FC = () => {
   };
 
   return (
-    <div className="relative flex flex-col overflow-hidden w-1080 h-1920 bg-[url('/03-waiting-page/waiting-bg.png')]">
+    <div className="relative flex flex-col items-center justify-center overflow-hidden w-[100vw] h-[100vh] bg-[url('/03-waiting-page/waiting-bg.png')] bg-cover bg-center">
+      {/* relative flex flex-col items-center justify-center overflow-hidden w-[100vw] h-[100vh] bg-[url('/02-capture-page/capturing-page-bg.png')] bg-cover bg-center */}
       <div className="absolute repeat-infinite animate-bounce top-[526px] right-[394px]">
         <img
           src="/03-waiting-page/loading.svg"

@@ -10,7 +10,7 @@ const ParagonLoading = () => {
         <img
           src="/ads.png"
           alt="ads"
-          className="absolute z-60 w-[836px] bottom-[150px] left-[116px] rounded-2xl border-white border-[10px]"
+          className="absolute z-60 w-[750px] bottom-[150px] left-[175px] rounded-2xl border-white border-[10px]"
         />
         {/* <video
           src="/paragonAds.mp4"  // Replace with the correct video source path

@@ -117,7 +117,7 @@ const ResultPage = () => {
 
   return (
     <div
-      className="relative flex flex-col w-1080 h-1920 overflow-hidden"
+      className="relative flex flex-col w-[100vw] h-[100vh] items-center justify-center bg-cover bg-center overflow-hidden"
       style={{
         backgroundImage: `url(${backgroundUrl})`,
         backgroundSize: "cover",
@@ -125,7 +125,7 @@ const ResultPage = () => {
       }}
     >
       <div
-        className="absolute bg-white w-[460px] h-[460px] bottom-[550px] left-[70px] rounded-2xl z-10 border-8
+        className="absolute bg-white w-[460px] h-[460px] bottom-[540px] left-[70px] rounded-2xl z-10 border-8
          border-white"
       >
         {isLoading ? (
@@ -141,7 +141,7 @@ const ResultPage = () => {
         )}
       </div>
       <div
-        className="absolute bg-white w-[460px] h-[460px] bottom-[550px] right-[70px] rounded-2xl z-10 border-8
+        className="absolute bg-white w-[460px] h-[460px] bottom-[540px] right-[70px] rounded-2xl z-10 border-8
          border-white"
       >
         {isLoading ? (
